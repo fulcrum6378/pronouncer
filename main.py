@@ -1,34 +1,73 @@
 import numpy as np
 import func as fun
+import random
 
 mini = 0
 maxi = 100000
 togg = True
 togval = 0
-togmax = 4  # int
+togmax = 700  # Sound Pitch (int)
+over = False
+overadd = 0.1
+overval = 0
+overmax = 30  # Addition (int)
+freq = False
+freqval = 0
+freqmax = 5  # Frequency (int)
 
 
 def interpolator(i):
-    global mini, maxi, togg, togval, togmax
+    global freq, freqval, freqmax, mini, maxi, togg, togval, togmax, over, overadd, overval, overmax
     x = 0
+
+    # Frequency
+    shallEnd = False
+    if not freq: shallEnd = True
+    if freqval >= freqmax:
+        freq = not freq
+        freqval = 0
+    else:
+        freqval += 1
+    if shallEnd: return x
+
     median = maxi / 2
     if i < median:
         x += abs(i - mini)
     else:
         x += abs(i - maxi)
-    x *= 0.000002
-    x += 0  # "random.random()" gives it a noise
-    if not togg: x = 0 - x
+    x *= 0.000001
+
+    # Addition
+    if over: x += overadd * (random.random() * x)  # (x + 0.08)
+    if overval >= overmax:
+        over = not over
+        overval = 0
+    else:
+        overval += 1
+    # "random.random()" gives it a noise
+
+    # Positive or Negative toggle
+    if not togg: x = 0 - (x * 0.9)
     if togval >= togmax:
         togg = not togg
         togval = 0
     else:
-        togval += 1
-    return x
+        if togg:
+            togval += 1
+        else:
+            togval += 5
+    return x  # np.array([x, x])
 
 
-data = np.array([])
-for d in range(mini, maxi):
-    data = np.append(data, interpolator(d))
-fun.arrayToAudio(data, '5')
-fun.visualizeData(data)
+def learn():
+    data = np.array([])
+    for d in range(mini, maxi):
+        data = np.append(data, interpolator(d))
+    fun.arrayToAudio(data, '9', 1)
+    fun.visualizeData(data)
+
+
+# learn()
+#  fun.visualizeFile('aaa_1', 'example')
+# fun.extractAudio('aaa_1', True)
+fun.arrayToAudio(np.array(fun.audioToArray('aaa_1', True)[0][250000:255000]), 'aaa_1_1', 1, 'example')
