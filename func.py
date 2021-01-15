@@ -41,3 +41,10 @@ def extractAudio(file, flatten=False, fold='example', ext='wav'):
     f = open(fold + '/' + file + '.json', 'w')
     f.write(json.dumps(audioToArray(file, flatten, fold, ext)))
     f.close()
+
+
+def jsonToAudio(file, fold='example', ext='wav'):
+    f = open(fold + '/' + file + '.json', 'r')
+    data = json.loads(f.read())
+    f.close()
+    arrayToAudio(np.array(data), file, 1, fold, ext)
