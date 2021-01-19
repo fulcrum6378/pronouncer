@@ -10,11 +10,11 @@ def learn():
     data = np.array([])
     for d in range(0, 1000):  # changeable
         data = np.concatenate((data, vowel.tremble()))
-    fun.arrayToAudio(data, '13', 1)
+    fun.arrayToAudio(data, '10', 1)
     fun.visualizeData(data)
 
 
-learn()
+# learn()
 # fun.visualizeFile('sa_1', 'example')
 # fun.extractAudio('uuu_1_1', True)
 # fun.arrayToAudio(np.array(fun.audioToArray('äää_1', True)[0][200000:205000]), 'äää_1_1', 1, 'example')

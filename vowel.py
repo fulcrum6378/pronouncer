@@ -1,37 +1,91 @@
 import numpy as np
 import random as r
 
-import func as fun
-
 
 def tremble():
     data = np.array([])
     for i in range(0, 500):  # unchangeable
-        data = np.append(data, ii(i))  # random REALLY gives it a noise
+        data = np.append(data, aa(i))  # random REALLY gives it a noise
     return data
 
 
 def aa(i):
-    if i < 57:
-        x = r.uniform(0.05, 0.1)
-    elif i < 61:
+    if i < 19:
+        x = r.uniform(0.069, 0.13)
+    elif i < 32:
+        x = r.uniform(0.05, 0.09)
+    elif i < 52:
+        x = r.uniform(0.08, 0.155)
+    elif i < 58:
+        x = r.uniform(0.054, 0.069)
+    elif i < 60:
         x = r.uniform(0, 0.04)
-    elif i < 116:
-        x = r.uniform(-0.03, 0.01)
-    elif i < 178:
-        x = r.uniform(-0.05, 0)
+    elif i < 72:
+        x = r.uniform(-0.02, 0)
+    elif i < 74:
+        x = r.uniform(0, 0.01)
+    elif i < 99:
+        x = r.uniform(-0.03, 0)
+    elif i < 101:
+        x = r.uniform(0, 0.01)
+    elif i < 104:
+        x = r.uniform(-0.01, 0)
+    elif i < 109:
+        x = r.uniform(0, 0.02)
+    elif i < 117:
+        x = r.uniform(-0.01, 0)
+    elif i < 118:
+        x = r.uniform(-0.035, -0.025)
+    elif i < 137:
+        x = r.uniform(-0.043, -0.03)
+    elif i < 138:
+        x = r.uniform(-0.03, -0.02)
+    elif i < 145:
+        x = r.uniform(-0.017, -0.013)
+    elif i < 147:
+        x = r.uniform(-0.03, -0.02)
+    elif i < 156:
+        x = r.uniform(-0.045, -0.03)
+    elif i < 159:
+        x = r.uniform(-0.025, -0.01)
+    elif i < 166:
+        x = r.uniform(-0.005, 0.005)
+    elif i < 176:
+        x = r.uniform(-0.034, -0.01)
+    elif i < 180:
+        x = r.uniform(-0.05, -0.04)
+    elif i < 187:
+        x = r.uniform(-0.06, -0.049)
+    elif i < 194:
+        x = r.uniform(-0.048, -0.038)
+    elif i < 198:
+        x = r.uniform(-0.03, -0.023)
+    elif i < 203:
+        x = r.uniform(-0.04, -0.03)
     elif i < 210:
-        x = r.uniform(-0.07, -0.02)
-    elif i < 230:
-        x = r.uniform(-0.05, -0.01)
-    elif i < 278:
-        x = r.uniform(-0.08, -0.04)
-    elif i < 290:
-        x = r.uniform(-0.05, -0.03)
-    elif i < 320:
-        x = r.uniform(-0.07, -0.04)
+        x = r.uniform(-0.05, -0.04)
+    elif i < 219:
+        x = r.uniform(-0.045, -0.035)
+    elif i < 229:
+        x = r.uniform(-0.031, -0.02)
+    elif i < 234:
+        x = r.uniform(-0.048, -0.03)
+    elif i < 234:
+        x = r.uniform(-0.048, -0.03)
+    elif i < 239:
+        x = r.uniform(-0.065, -0.05)
+    elif i < 245:
+        x = r.uniform(-0.078, -0.07)
+    elif i < 297:
+        x = r.uniform(-0.065, -0.04)
+    elif i < 303:
+        x = r.uniform(-0.07, -0.06)
+    elif i < 319:
+        x = r.uniform(-0.059, -0.049)
+    elif i < 324:
+        x = r.uniform(-0.075, -0.055)
     elif i < 327:
-        x = r.uniform(-0.09, -0.06)
+        x = r.uniform(-0.1, -0.07)
     elif i < 337:
         x = r.uniform(-0.1, -0.13)
     elif i < 340:
@@ -107,8 +161,204 @@ def aa(i):
     return x
 
 
-def aaa():
-    return fun.audioToArray('äää_1_2')[0]
+def aaa(i):
+    if i < 5:
+        x = r.uniform(0.075, 0.085)
+    elif i < 7:
+        x = r.uniform(0.109, 0.129)
+    elif i < 8:
+        x = r.uniform(0.095, 0.105)
+    elif i < 13:
+        x = r.uniform(0.069, 0.085)
+    elif i < 16:
+        x = r.uniform(0.09, 0.0115)
+    elif i < 19:
+        x = r.uniform(0.085, 0.1)
+    elif i < 30:
+        x = r.uniform(0.055, 0.1)
+    elif i < 40:
+        x = r.uniform(0.08, 0.125)
+    elif i < 50:
+        x = r.uniform(0.12, 0.15)
+    elif i < 52:
+        x = r.uniform(0.075, 0.1)
+    elif i < 58:
+        x = r.uniform(0.05, 0.07)
+    elif i < 58:
+        x = r.uniform(0.05, 0.07)
+    elif i < 59:
+        x = r.uniform(0.03, 0.04)
+    elif i < 60:
+        x = r.uniform(0, 0.005)
+    elif i < 72:
+        x = r.uniform(-0.02, 0)
+    elif i < 74:
+        x = r.uniform(0, 0.007)
+    elif i < 99:
+        x = r.uniform(-0.033, 0)
+    elif i < 101:
+        x = r.uniform(0, 0.01)
+    elif i < 104:
+        x = r.uniform(-0.01, 0)
+    elif i < 109:
+        x = r.uniform(0, 0.02)
+    elif i < 117:
+        x = r.uniform(-0.01, 0)
+    elif i < 137:
+        x = r.uniform(-0.044, -0.029)
+    elif i < 146:
+        x = r.uniform(-0.026, -0.011)
+    elif i < 156:
+        x = r.uniform(-0.045, -0.029)
+    elif i < 158:
+        x = r.uniform(-0.025, -0.015)
+    elif i < 166:
+        x = r.uniform(-0.01, 0.01)
+    elif i < 167:
+        x = r.uniform(-0.013, -0.012)
+    elif i < 168:
+        x = r.uniform(-0.02, -0.019)
+    elif i < 175:
+        x = r.uniform(-0.031, -0.021)
+    elif i < 178:
+        x = r.uniform(-0.05, -0.034)
+    elif i < 183:
+        x = r.uniform(-0.058, -0.049)
+    elif i < 186:
+        x = r.uniform(-0.06, -0.055)
+    elif i < 194:
+        x = r.uniform(-0.048, -0.038)
+    elif i < 198:
+        x = r.uniform(-0.03, -0.023)
+    elif i < 202:
+        x = r.uniform(-0.036, -0.03)
+    elif i < 204:
+        x = r.uniform(-0.046, -0.039)
+    elif i < 209:
+        x = r.uniform(-0.06, -0.05)
+    elif i < 219:
+        x = r.uniform(-0.05, -0.03)
+    elif i < 231:
+        x = r.uniform(-0.031, -0.021)
+    elif i < 233:
+        x = r.uniform(-0.045, -0.035)
+    elif i < 239:
+        x = r.uniform(-0.062, -0.047)
+    elif i < 245:
+        x = r.uniform(-0.078, -0.07)
+    elif i < 252:
+        x = r.uniform(-0.066, -0.059)
+    elif i < 264:
+        x = r.uniform(-0.053, -0.045)
+    elif i < 277:
+        x = r.uniform(-0.061, -0.05)
+    elif i < 290:
+        x = r.uniform(-0.049, -0.039)
+    elif i < 294:
+        x = r.uniform(-0.062, -0.05)
+    elif i < 301:
+        x = r.uniform(-0.07, -0.063)
+    elif i < 321:
+        x = r.uniform(-0.061, -0.049)
+    elif i < 324:
+        x = r.uniform(-0.075, -0.065)
+    elif i < 327:
+        x = r.uniform(-0.098, -0.085)
+    elif i < 331:
+        x = r.uniform(-0.12, -0.1)
+    elif i < 335:
+        x = r.uniform(-0.13, -0.12)
+    elif i < 337:
+        x = r.uniform(-0.12, -0.11)
+    elif i < 340:
+        x = r.uniform(-0.105, -0.09)
+    elif i < 342:
+        x = r.uniform(-0.075, -0.06)
+    elif i < 344:
+        x = r.uniform(-0.06, -0.045)
+    elif i < 346:
+        x = r.uniform(-0.035, -0.025)
+    elif i < 348:
+        x = r.uniform(-0.01, 0)
+    elif i < 358:
+        x = r.uniform(0, 0.013)
+    elif i < 361:
+        x = r.uniform(-0.0125, 0)
+    elif i < 365:
+        x = r.uniform(-0.03, -0.02)
+    elif i < 367:
+        x = r.uniform(-0.04, -0.03)
+    elif i < 370:
+        x = r.uniform(-0.059, -0.049)
+    elif i < 381:
+        x = r.uniform(-0.067, -0.054)
+    elif i < 383:
+        x = r.uniform(-0.07, -0.065)
+    elif i < 390:
+        x = r.uniform(-0.062, -0.049)
+    elif i < 391:
+        x = r.uniform(-0.04, -0.03)
+    elif i < 396:
+        x = r.uniform(-0.03, -0.02)
+    elif i < 399:
+        x = r.uniform(-0.02, 0)
+    elif i < 405:
+        x = r.uniform(0, 0.025)
+    elif i < 407:
+        x = r.uniform(0.03, 0.04)
+    elif i < 408:
+        x = r.uniform(0.04, 0.05)
+    elif i < 410:
+        x = r.uniform(0.06, 0.07)
+    elif i < 412:
+        x = r.uniform(0.08, 0.09)
+    elif i < 415:
+        x = r.uniform(0.09, 0.1)
+    elif i < 417:
+        x = r.uniform(0.1, 0.11)
+    elif i < 418:
+        x = r.uniform(0.12, 0.123)
+    elif i < 421:
+        x = r.uniform(0.09, 0.1)
+    elif i < 424:
+        x = r.uniform(0.06, 0.08)
+    elif i < 425:
+        x = r.uniform(0.04, 0.05)
+    elif i < 431:
+        x = r.uniform(0.078, 0.1)
+    elif i < 432:
+        x = r.uniform(0.13, 0.145)
+    elif i < 433:
+        x = r.uniform(0.145, 0.165)
+    elif i < 442:
+        x = r.uniform(0.15, 0.2)
+    elif i < 452:
+        x = r.uniform(0.23, 0.265)
+    elif i < 454:
+        x = r.uniform(0.19, 0.2)
+    elif i < 455:
+        x = r.uniform(0.165, 0.175)
+    elif i < 459:
+        x = r.uniform(0.13, 0.1475)
+    elif i < 462:
+        x = r.uniform(0.11, 0.13)
+    elif i < 479:
+        x = r.uniform(0.05, 0.09)
+    elif i < 481:
+        x = r.uniform(0.03, 0.04)
+    elif i < 482:
+        x = r.uniform(0.05, 0.06)
+    elif i < 484:
+        x = r.uniform(0.07, 0.082)
+    elif i < 486:
+        x = r.uniform(0.1, 0.12)
+    elif i < 488:
+        x = r.uniform(0.08, 0.1)
+    elif i < 499:
+        x = r.uniform(0.1, 0.13)
+    else:
+        x = r.uniform(0.13, 0.145)
+    return x
 
 
 def ii(i):
