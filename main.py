@@ -10,7 +10,7 @@ def learn():
     data = np.array([])
     for d in range(0, 1000):  # changeable
         data = np.concatenate((data, vowel.tremble()))
-    fun.arrayToAudio(data, '14', 1)
+    fun.arrayToAudio(data, '13', 1)
     fun.visualizeData(data)
 
 
