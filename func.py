@@ -2,15 +2,6 @@ import soundfile as sf
 import matplotlib.pyplot as plt
 import numpy as np
 import json
-from enum import Enum
-
-
-class Vowel(Enum):
-    AA = 1
-    AAA = 2
-    II = 3
-    OO = 4
-    UU = 5
 
 
 def audioToArray(file, flatten=False, fold='example', ext='wav'):
@@ -18,13 +9,13 @@ def audioToArray(file, flatten=False, fold='example', ext='wav'):
     ex = rawData[0].tolist()
     if flatten:
         data = []
-        for r in ex:
-            if isinstance(r, np.ndarray):
-                data.append(r[0])
-            elif isinstance(r, list):
-                data.append(r[0])
+        for rr in ex:
+            if isinstance(rr, np.ndarray):
+                data.append(rr[0])
+            elif isinstance(rr, list):
+                data.append(rr[0])
             else:
-                data.append(r)
+                data.append(rr)
     else:
         data = ex
     return [data, rawData[1]]
@@ -52,8 +43,16 @@ def extractAudio(file, flatten=False, fold='example', ext='wav'):
     f.close()
 
 
-def jsonToAudio(file, fold='example', ext='wav'):
+def openJson(file, fold='example'):
     f = open(fold + '/' + file + '.json', 'r')
     data = json.loads(f.read())
     f.close()
-    arrayToAudio(np.array(data), file, 1, fold, ext)
+    return data
+
+
+def jsonToAudio(file, fold='example', ext='wav'):
+    arrayToAudio(np.array(openJson(file, fold)), file, 1, fold, ext)
+
+
+def r(x, y):  # return random.uniform(x, y)  # which gives it a noise
+    return (x + y) / 2  # make it like a gradient later
