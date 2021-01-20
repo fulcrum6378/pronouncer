@@ -2,6 +2,15 @@ import soundfile as sf
 import matplotlib.pyplot as plt
 import numpy as np
 import json
+from enum import Enum
+
+
+class Vowel(Enum):
+    AA = 1
+    AAA = 2
+    II = 3
+    OO = 4
+    UU = 5
 
 
 def audioToArray(file, flatten=False, fold='example', ext='wav'):
@@ -21,13 +30,13 @@ def audioToArray(file, flatten=False, fold='example', ext='wav'):
     return [data, rawData[1]]
 
 
-def arrayToAudio(data, file, channels=1, fold='learn', ext='wav'):  # CANNOT CREATE FOLDER
+def arrayToAudio(data, file, channels=1, fold='.', ext='wav'):  # CANNOT CREATE FOLDER
     with sf.SoundFile(fold + '/' + file + '.' + ext, 'w', 44100, channels, 'PCM_24') as f:
         f.write(data)
         f.close()
 
 
-def visualizeFile(file, fold='learn', ext='wav'):
+def visualizeFile(file, fold='example', ext='wav'):
     plt.plot(audioToArray(file, False, fold, ext)[0])
     plt.show()
 

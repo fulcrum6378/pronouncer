@@ -1,21 +1,21 @@
 import numpy as np
+import os
 
 import func as fun
 import vowel
 
 
-# 10 => a, 11 => o, 12 => ä, 13 => i, 14 => u
-
-def learn():
+def makeIt():
+    raw = fun.audioToArray('ss_1', True)[0][202000:208000]
     data = np.array([])
-    for d in range(0, 1000):  # changeable
-        data = np.concatenate((data, vowel.tremble()))
-    fun.arrayToAudio(data, '10', 1)
-    fun.visualizeData(data)
+    for d in range(0, 40):
+        if d < 1:
+            data = np.concatenate((data, raw))
+        else:
+            data = np.concatenate((data, vowel.tremble(fun.Vowel.UU)))
+    fun.arrayToAudio(data, 'output', 1)
+    os.system("start ./output.wav")
+    fun.visualizeFile('output', '.')  # 'ss_1'
 
 
-# learn()
-# fun.visualizeFile('sa_1', 'example')
-# fun.extractAudio('uuu_1_1', True)
-# fun.arrayToAudio(np.array(fun.audioToArray('äää_1', True)[0][200000:205000]), 'äää_1_1', 1, 'example')
-# fun.jsonToAudio('uuu_1_2')
+makeIt()
