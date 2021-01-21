@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum, unique
 import numpy as np
 
 import vowel.close_back_rounded as close_back_rounded
@@ -8,12 +8,13 @@ import vowel.open_front_unrounded as open_front_unrounded
 import vowel.open_mid_back_rounded as open_mid_back_rounded
 
 
+@unique
 class Vowel(Enum):
-    CLOSE_BACK_ROUNDED = 1  # Persian UUU
-    CLOSE_FRONT_UNROUNDED = 2  # Persian III
-    OPEN_FRONT_UNROUNDED = 3  # Latin AAA
-    OPEN_MID_BACK_ROUNDED = 4  # Persian OOO
-    NEAR_OPEN_FRONT_UNROUNDED = 5  # Persian-American AAA
+    CLOSE_BACK_ROUNDED = "u"
+    CLOSE_FRONT_UNROUNDED = "i"
+    OPEN_FRONT_UNROUNDED = "a"
+    OPEN_MID_BACK_ROUNDED = "ɔ"
+    NEAR_OPEN_FRONT_UNROUNDED = "æ"
 
 
 def tremble(vow, multiply):
