@@ -3,9 +3,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 
+import dat.config as cfg
+
+pro = "pro/"
+
 
 def audioToArray(file, flatten=False, fold='example', ext='wav'):
-    rawData = sf.read(fold + '/' + file + '.' + ext)
+    rawData = sf.read(cfg.root + pro + fold + '/' + file + '.' + ext)
     ex = rawData[0].tolist()
     if flatten:
         data = []
@@ -22,7 +26,7 @@ def audioToArray(file, flatten=False, fold='example', ext='wav'):
 
 
 def arrayToAudio(data, file, channels=1, fold='.', ext='wav'):  # CANNOT CREATE FOLDER
-    with sf.SoundFile(fold + '/' + file + '.' + ext, 'w', 44100, channels, 'PCM_24') as f:
+    with sf.SoundFile(cfg.root + pro + fold + '/' + file + '.' + ext, 'w', 44100, channels, 'PCM_24') as f:
         f.write(data)
         f.close()
 
@@ -38,13 +42,13 @@ def visualizeData(data):
 
 
 def extractAudio(file, flatten=False, fold='example', ext='wav'):
-    f = open(fold + '/' + file + '.json', 'w')
+    f = open(cfg.root + pro + fold + '/' + file + '.json', 'w')
     f.write(json.dumps(audioToArray(file, flatten, fold, ext)))
     f.close()
 
 
 def openJson(file, fold='example'):
-    f = open(fold + '/' + file + '.json', 'r')
+    f = open(cfg.root + pro + fold + '/' + file + '.json', 'r')
     data = json.loads(f.read())
     f.close()
     return data

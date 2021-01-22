@@ -1,9 +1,9 @@
 import copy
 import numpy as np
 
-import consonant.main as con
-import func as fun
-import vowel.main as vow
+import pro.consonant.main as con
+import pro.func as fun
+import pro.vowel.main as vow
 
 stress = "'"
 prolong = ":"
@@ -36,7 +36,7 @@ def main(text):
             raise Exception("Unknown IPA character!")
     if len(s.vows) > 0:
         syllables = np.append(syllables, [s])
-    print([sy.__dict__ for sy in syllables])
+    # print([sy.__dict__ for sy in syllables])
     return syllables
 
 
@@ -61,7 +61,7 @@ class Syllable:
         data = np.array([])
         for bc in self.bCons:
             data = np.concatenate((data, con.compose(bc)))
-        mul = 2
+        mul = 2  # too much of this bitch makes an echo sound
         if self.stressed: mul *= 1.25
         for vv in self.vows:
             for d in range(0, 15):

@@ -1,20 +1,12 @@
-import numpy as np
 import os
 
-import func as fun
-import syllable as syl
+import dat.config as cfg
+import pro.func as fun
+from pro.main import main
 
-
-def main(text):
-    data = np.array([])
-    for s in syl.main(text.strip()):
-        data = np.concatenate((data, s.compose()))
-    fun.arrayToAudio(data, 'output', 1)
-    os.system("start ./output.wav")
-    fun.visualizeFile('output', '.')
-
-
-main(" sæsus ")
-# fun.arrayToAudio(fun.audioToArray('ss_1', True)[0][202000:207000], 'ss_1_1', 1, 'example')
-# fun.extractAudio('ss_1_1')
-# fun.visualizeData(fun.openJson('ss_1_1')[0])
+main(" ʃaʃu ")
+# fun.arrayToAudio(fun.audioToArray('sh_1', True)[0][52000:54500], 'sh_1_1', 1, 'example')
+# os.system("start " + cfg.root + "pro/example/sh_1_1.wav")
+# fun.visualizeFile('sh_1_1', 'example')
+# fun.extractAudio('sh_1_1')
+# fun.visualizeData(fun.openJson('sh_1_1')[0])

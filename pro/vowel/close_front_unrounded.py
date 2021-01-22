@@ -1,4 +1,4 @@
-from func import r
+from pro.func import r
 
 
 def main(i):
