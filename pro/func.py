@@ -1,7 +1,8 @@
-import soundfile as sf
+import json
 import matplotlib.pyplot as plt
 import numpy as np
-import json
+import os
+import soundfile as sf
 
 import dat.config as cfg
 
@@ -26,9 +27,13 @@ def audioToArray(file, flatten=False, fold='example', ext='wav'):
 
 
 def arrayToAudio(data, file, channels=1, fold='.', ext='wav'):  # CANNOT CREATE FOLDER
-    with sf.SoundFile(cfg.root + pro + fold + '/' + file + '.' + ext, 'w', 44100, channels, 'PCM_24') as f:
-        f.write(data)
-        f.close()
+    try:
+        with sf.SoundFile(cfg.root + pro + fold + '/' + file + '.' + ext, 'w', 44100, channels, 'PCM_24') as f:
+            f.write(data)
+            f.close()
+    except RuntimeError:
+        os.system("TASKKILL /F /IM wmplayer.exe")
+        arrayToAudio(data, file, channels, fold, ext)
 
 
 def visualizeFile(file, fold='example', ext='wav'):
@@ -41,9 +46,9 @@ def visualizeData(data):
     plt.show()
 
 
-def extractAudio(file, flatten=False, fold='example', ext='wav'):
-    f = open(cfg.root + pro + fold + '/' + file + '.json', 'w')
-    f.write(json.dumps(audioToArray(file, flatten, fold, ext)))
+def extractAudio(file1, file2, fold1='example', fold2='consonant', ext='wav', flatten=False):
+    f = open(cfg.root + pro + fold2 + '/' + file2 + '.json', 'w')
+    f.write(json.dumps(audioToArray(file1, flatten, fold1, ext)[0]))
     f.close()
 
 

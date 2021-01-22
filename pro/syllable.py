@@ -36,7 +36,7 @@ def main(text):
             raise Exception("Unknown IPA character!")
     if len(s.vows) > 0:
         syllables = np.append(syllables, [s])
-    # print([sy.__dict__ for sy in syllables])
+    print([sy.__dict__ for sy in syllables])
     return syllables
 
 
@@ -60,14 +60,14 @@ class Syllable:
     def compose(self):
         data = np.array([])
         for bc in self.bCons:
-            data = np.concatenate((data, con.compose(bc)))
+            data = np.concatenate((data, con.compose(bc, True)))
         mul = 2  # too much of this bitch makes an echo sound
         if self.stressed: mul *= 1.25
         for vv in self.vows:
             for d in range(0, 15):
                 data = np.concatenate((data, vow.tremble(vv, mul)))
-                if mul > 1: mul -= 0.5
+                if mul > 1: mul -= 0.25
                 if mul < 1: mul = 1
         for ac in self.aCons:
-            data = np.concatenate((data, con.compose(ac)))
+            data = np.concatenate((data, con.compose(ac, False)))
         return data
