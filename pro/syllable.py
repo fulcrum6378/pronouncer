@@ -32,6 +32,11 @@ def main(text):
             s.prolong = True
         elif ch == stress:
             s.stressed = True
+        elif ch == " ":
+            s.space += 1
+            if len(text) < (c + 1) or text[c + 1] != " ":
+                syllables = np.append(syllables, [copy.deepcopy(s)])
+                s = Syllable()
         else:
             raise Exception("Unknown IPA character!")
     if len(s.vows) > 0:
@@ -47,6 +52,7 @@ class Syllable:
         self.vows = []
         self.aCons = []
         self.prolong = False
+        self.space = 0
 
     def addBCon(self, consonant):
         self.bCons.append(consonant)
@@ -70,4 +76,8 @@ class Syllable:
                 if mul < 1: mul = 1
         for ac in self.aCons:
             data = np.concatenate((data, con.compose(ac, False)))
+        for spc in range(0, self.space):
+            spacer = np.array([])
+            for mut in range(0, 2500): spacer = np.append(spacer, 0)
+            data = np.concatenate((data, spacer))
         return data
