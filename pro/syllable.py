@@ -12,14 +12,22 @@ prolong = ":"
 def main(text):
     syllables = np.array([])
     s = Syllable()
+    rollBack = 0
     for c in range(0, len(text)):
+        if rollBack > 0:
+            rollBack -= 1
+            continue
+
+        conFound = findCons(text[c:])
+        isCon = conFound[0]
+        rollBack = conFound[1]
         ch = text[c]
-        isCon = fun.findEnum(con.Consonant, ch)
         isVow = fun.findEnum(vow.Vowel, ch)
+
         if isCon is not None:
             if len(s.vows) == 0:
                 s.addBCon(isCon)
-            elif len(text) > (c + 1) and fun.findEnum(vow.Vowel, text[c + 1]) is not None:
+            elif upcomingVowel(text[c:], rollBack):
                 syllables = np.append(syllables, [copy.deepcopy(s)])
                 s = Syllable()
                 s.addBCon(isCon)
@@ -38,11 +46,35 @@ def main(text):
                 syllables = np.append(syllables, [copy.deepcopy(s)])
                 s = Syllable()
         else:
-            raise Exception("Unknown IPA character!")
+            raise Exception("Unknown IPA character: " + text[c:])
+    # for loop ends here
+
     if len(s.vows) > 0:
         syllables = np.append(syllables, [s])
     print([sy.__dict__ for sy in syllables])
     return syllables
+
+
+def findCons(text):
+    ch = text[0]
+    isCon = fun.findEnum(con.Consonant, ch)
+    rollBack = 0
+    if len(text) > 2:
+        if ch == 't' and text[1] == '͡' and text[2] == 'ʃ':
+            isCon = con.Consonant.VOICELESS_PALATO_ALVEOLAR_AFFRICATE
+            rollBack += 2
+        if ch == 'd' and text[1] == '͡' and text[2] == 'ʒ':
+            isCon = con.Consonant.VOICED_POSTALVEOLAR_AFFRICATE
+            rollBack += 2
+    if len(text) > 1:
+        if ch == 'k' and text[1] == 'ʼ':
+            isCon = con.Consonant.VELAR_EJECTIVE_PLOSIVE
+            rollBack += 1
+    return [isCon, rollBack]
+
+
+def upcomingVowel(text, roll):
+    return len(text) > (1 + roll) and fun.findEnum(vow.Vowel, text[1 + roll]) is not None
 
 
 class Syllable:
