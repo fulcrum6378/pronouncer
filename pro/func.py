@@ -9,7 +9,7 @@ import dat.config as cfg
 pro = "pro/"
 
 
-def audioToArray(file, flatten=False, fold='example', ext='wav'):
+def audioToArray(file, flatten=False, fold='raw', ext='wav'):
     rawData = sf.read(cfg.root + pro + fold + '/' + file + '.' + ext)
     ex = rawData[0].tolist()
     if flatten:
@@ -63,8 +63,15 @@ def jsonToAudio(file, fold='example', ext='wav'):
     arrayToAudio(np.array(openJson(file, fold)), file, 1, fold, ext)
 
 
-def r(x, y):  # return random.uniform(x, y)  # which gives it a noise
-    return (x + y) / 2  # make it like a gradient later
+def r(x, y, i=None, start=None, end=None):  # return random.uniform(x, y)  # which gives it a noise
+    if i is None:
+        return (x + y) / 2, 0  # make it like a gradient later
+    else:
+        frames = end - start
+        if frames < 1:
+            return (x + y) / 2, start
+        else:
+            return x + (((y - x) / frames) * i), start
 
 
 def findEnum(enum, val):

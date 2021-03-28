@@ -32,6 +32,7 @@ class Consonant(Enum):  # auto()  # auto-generates numbers for items
     VELAR_EJECTIVE_PLOSIVE = "kʼ"
     VOICED_ALVEOLAR_FRICATIVE = "z"
     VOICED_ALVEOLAR_PLOSIVE = "d"
+    # VOICED_BILABIAL_PLOSIVE = "b"
     VOICED_DENTAL_FRICATIVE = "ð"
     VOICED_LABIODENTAL_FRICATIVE = "v"
     VOICED_POSTALVEOLAR_AFFRICATE = "d͡ʒ"
@@ -39,6 +40,7 @@ class Consonant(Enum):  # auto()  # auto-generates numbers for items
     VOICED_UVULAR_FRICATIVE = "ʁ"
     VOICELESS_ALVEOLAR_FRICATIVE = "s"
     VOICELESS_ALVEOLAR_PLOSIVE = "t"
+    # VOICELESS_BILABIAL_PLOSIVE = "p"
     VOICELESS_DENTAL_FRICATIVE = "θ"
     VOICELESS_GLOTTAL_FRICATIVE = "h"
     VOICELESS_LABIODENTAL_FRICATIVE = "f"
@@ -47,7 +49,7 @@ class Consonant(Enum):  # auto()  # auto-generates numbers for items
     VOICELESS_VELAR_PLOSIVE = "k"
 
 
-def compose(con, before):
+def compose(con: Consonant, before: bool):
     if con == Consonant.ALVEOLAR_APPROXIMANT:
         return alveolar_approximant.main()
     if con == Consonant.ALVEOLAR_NASAL:

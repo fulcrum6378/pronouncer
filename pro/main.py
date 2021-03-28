@@ -11,5 +11,5 @@ def main(text):
     for s in syl.main(text.strip()):
         data = np.concatenate((data, s.compose()))
     fun.arrayToAudio(data, 'output', 1)
-    os.system("start " + cfg.root + "pro/output.wav")
+    os.system(cfg.player + cfg.root + "pro/output.wav")
     fun.visualizeFile('output', cfg.root[:-1])

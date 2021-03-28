@@ -4,18 +4,18 @@ import dat.config as cfg
 import pro.func as fun
 from pro.main import main
 
-src = 'jj_1'
-tar = 'jj_1_1'
+src = 'eeee'
+tar = 'eeee'
 con = 'voiced_postalveolar_affricate'
-mode = 0
+mode = 1
 
 if mode == 0:
-    main(" hanuuz ham kʼuuun nimidi ")  # æɔʃʒθʼʁɹ d͡ʒ t͡ʃ
+    main("salam")  # æɔʃʒθʼʁɹ d͡ʒ t͡ʃ
 elif mode == 1:
-    os.system("start " + cfg.root + "pro/example/" + src + ".wav")
-    fun.visualizeFile(src, 'example')
+    # os.system(cfg.player + cfg.root + "pro/raw/" + src + ".m4a")
+    fun.visualizeFile(src, 'raw', 'm4a')
 elif mode == 2:
     fun.arrayToAudio(fun.audioToArray(src, True)[0][172000:177000], tar, 1, 'example')
-    # os.system("start " + cfg.root + "pro/example/jj_1_1.wav")
+    # os.system(cfg.player + cfg.root + "pro/example/jj_1_1.wav")
     fun.extractAudio(tar, con)
     main("salaam")
