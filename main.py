@@ -1,21 +1,28 @@
-import os
+import base64
+import cgi
+import numpy as np
+import socket
+from soundfile import SoundFile
 
-import dat.config as cfg
-import pro.func as fun
-from pro.main import main
+import config as cfg
+import func as fun
+import syllable as syl
 
-src = 'eeee'
-tar = 'eeee'
-con = 'voiced_postalveolar_affricate'
-mode = 1
 
-if mode == 0:
-    main("salam")  # æɔʃʒθʼʁɹ d͡ʒ t͡ʃ
-elif mode == 1:
-    # os.system(cfg.player + cfg.root + "pro/raw/" + src + ".m4a")
-    fun.visualizeFile(src, 'raw', 'm4a')
-elif mode == 2:
-    fun.arrayToAudio(fun.audioToArray(src, True)[0][172000:177000], tar, 1, 'example')
-    # os.system(cfg.player + cfg.root + "pro/example/jj_1_1.wav")
-    fun.extractAudio(tar, con)
-    main("salaam")
+if socket.gethostname() == "WIN-KJ6QV3R1373KIR":
+    print("Content-Type: text/plain\n")
+    got = {"t": ""}
+    try:
+        for g in cgi.FieldStorage().list: got[g.name] = g.value
+    except:
+        pass
+    if got["t"] == "":
+        print("hello there")
+    else:
+        data = np.array([])
+        for s in syl.main(got["t"].strip()):
+             data = np.concatenate((data, s.compose()))
+        fun.arrayToAudio(data, 'output', 1)
+        with open(fun.here() + 'output.wav', 'rb') as f:
+            print(str(base64.b64encode(f.read()))[2:-1])
+            f.close()
