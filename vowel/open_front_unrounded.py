@@ -1,4 +1,4 @@
-from pro.func import r
+from func import r
 
 b = 0
 

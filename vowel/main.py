@@ -1,11 +1,11 @@
 from enum import Enum, unique
 import numpy as np
 
-import pro.vowel.close_back_rounded as close_back_rounded
-import pro.vowel.close_front_unrounded as close_front_unrounded
-import pro.vowel.near_open_front_unrounded as near_open_front_unrounded
-import pro.vowel.open_front_unrounded as open_front_unrounded
-import pro.vowel.open_mid_back_rounded as open_mid_back_rounded
+import vowel.close_back_rounded as close_back_rounded
+import vowel.close_front_unrounded as close_front_unrounded
+import vowel.near_open_front_unrounded as near_open_front_unrounded
+import vowel.open_front_unrounded as open_front_unrounded
+import vowel.open_mid_back_rounded as open_mid_back_rounded
 
 
 @unique

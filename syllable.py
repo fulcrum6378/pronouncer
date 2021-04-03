@@ -1,9 +1,9 @@
 import copy
 import numpy as np
 
-import pro.consonant.main as con
-import pro.func as fun
-import pro.vowel.main as vow
+import consonant.main as con
+import func as fun
+import vowel.main as vow
 
 stress = "'"
 prolong = ":"
@@ -51,7 +51,8 @@ def main(text):
 
     if len(s.vows) > 0:
         syllables = np.append(syllables, [s])
-    print([sy.__dict__ for sy in syllables])
+    if fun.can_print():
+        print([sy.__dict__ for sy in syllables])
     return syllables
 
 

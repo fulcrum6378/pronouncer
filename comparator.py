@@ -1,8 +1,8 @@
 import numpy as np
 from typing import Dict, List
 
-import pro.consonant.main as con
-import pro.vowel.main as vow
+import consonant.main as con
+import vowel.main as vow
 
 
 def basic(whole: Dict[str, List], subject: List[int]):

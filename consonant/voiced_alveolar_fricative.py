@@ -1,4 +1,4 @@
-import pro.func as fun
+import func as fun
 import numpy as np
 
 
