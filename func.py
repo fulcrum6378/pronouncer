@@ -60,13 +60,13 @@ def jsonToAudio(file, fold='raw', ext='wav'):
 
 def r(x, y, i=None, start=None, end=None):  # return random.uniform(x, y)  # which gives it a noise
     if i is None:
-        return (x + y) / 2, 0  # make it like a gradient later
+        return (x + y) / 2  # , 0  # make it like a gradient later
     else:
         frames = end - start
         if frames < 1:
-            return (x + y) / 2, start
+            return (x + y) / 2 , start
         else:
-            return x + (((y - x) / frames) * i), start
+            return x + (((y - x) / frames) * i) , start
 
 
 def findEnum(enum, val):
