@@ -1,7 +1,8 @@
 import base64
 import cgi
-import numpy as np
 import socket
+
+import numpy as np
 
 import func as fun
 import syllable as syl
