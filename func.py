@@ -32,7 +32,7 @@ def audioToArray(file, flatten=False, fold='raw', ext='wav'):
     return [data, rawData[1]]
 
 
-def arrayToAudio(data, file, channels=1, fold='.', ext='wav'):  # CANNOT CREATE FOLDER
+def arrayToAudio(data, file, channels=1, fold='.', ext='wav'):
     try:
         with sf.SoundFile(root() + fold + '/' + file + '.' + ext, 'w', 44100, channels, 'PCM_24') as f:
             f.write(data)
